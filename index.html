@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nightshift</title>
 <script>document.documentElement.classList.add('js')</script>
 <meta name="description" content="Ultra-thin light-blocking sleep mask — the shift you need for the sleep you deserve.">
@@ -212,6 +213,33 @@
   .final .reassure{margin-top:2em;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
     display:flex;gap:10px 30px;justify-content:center;flex-wrap:wrap}
 
+  /* size selector + measure guide (final CTA) */
+  .sizing{max-width:360px;margin:0 auto 2.1em}
+  .size{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-2);border-radius:4px;overflow:hidden}
+  .size-opt{display:flex;flex-direction:column;align-items:center;gap:.16em;padding:14px 8px;
+    background:transparent;border:0;border-right:1px solid var(--line);cursor:pointer;color:var(--muted);
+    transition:background .35s cubic-bezier(.16,1,.3,1),color .35s cubic-bezier(.16,1,.3,1),transform .2s ease}
+  .size-opt:last-child{border-right:0}
+  .size-opt .sz{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.55rem;line-height:1}
+  .size-opt .rng{font-family:"Jost",sans-serif;font-weight:300;font-size:.66rem;letter-spacing:.06em;
+    color:var(--faint);transition:color .35s ease}
+  .size-opt:hover{color:var(--text);background:var(--accent-dim)}
+  .size-opt:focus-visible{outline:1px solid var(--accent-2);outline-offset:-2px}
+  .size-opt:active{transform:scale(.975)}
+  .size-opt.is-on{background:var(--accent);color:var(--charcoal)}
+  .size-opt.is-on .rng{color:rgba(13,16,20,.66)}
+  .measure{margin-top:10px;border-bottom:0;text-align:left}
+  .measure summary{padding:12px 0;font-family:"Jost",sans-serif;font-weight:400;font-size:.9rem;
+    letter-spacing:.03em;color:var(--muted);justify-content:center;gap:10px}
+  .measure summary:hover,.measure[open] summary{color:var(--text)}
+  .measure .ans{padding:2px 0 6px;font-size:.98rem;max-width:none}
+  .size-tbl{width:100%;border-collapse:collapse;margin:14px 0 2px}
+  .size-tbl th,.size-tbl td{padding:10px 2px;border-top:1px solid var(--line);text-align:left;
+    font-weight:300;font-size:.92rem;color:var(--muted)}
+  .size-tbl th{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.08rem;color:var(--text);width:32%}
+  .size-tbl td:last-child{text-align:right;color:var(--faint);font-variant-numeric:tabular-nums}
+  .measure .hint{font-size:.84rem;color:var(--faint);font-style:italic;margin-top:2px}
+
   /* footer */
   footer{border-top:1px solid var(--line);padding:52px 0;background:var(--charcoal)}
   .foot{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
@@ -237,6 +265,7 @@
     .js .stagger.in>*:nth-child(3){transition-delay:.32s}
     .js .stagger.in>*:nth-child(4){transition-delay:.48s}
     .js .stagger.in>*:nth-child(5){transition-delay:.64s}
+    .js .stagger.in>*:nth-child(6){transition-delay:.8s}
     .js .hero-inner>*{opacity:0;transform:translateY(24px);
       transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
     .js .hero-inner.in>*{opacity:1;transform:none}
@@ -485,6 +514,25 @@
       <span class="eyebrow" style="margin-bottom:1.8em">Make the shift tonight</span>
       <h2>Block out the light.<br>Get your nights back.</h2>
       <p>Let your body do what it already knows how to do &mdash; in complete, effortless darkness.</p>
+      <div class="sizing">
+        <div class="size" role="radiogroup" aria-label="Choose your size" id="sizeGroup">
+          <button class="size-opt" role="radio" aria-checked="false" data-size="Small" tabindex="-1"><span class="sz">S</span><span class="rng">up to 53&nbsp;cm</span></button>
+          <button class="size-opt is-on" role="radio" aria-checked="true" data-size="Medium" tabindex="0"><span class="sz">M</span><span class="rng">53&ndash;56&nbsp;cm</span></button>
+          <button class="size-opt" role="radio" aria-checked="false" data-size="Large" tabindex="-1"><span class="sz">L</span><span class="rng">56&nbsp;cm&nbsp;+</span></button>
+        </div>
+        <details class="measure">
+          <summary>How to find your size<span class="ic"></span></summary>
+          <div class="ans">
+            <p>Wrap a soft tape &mdash; or a piece of string against a ruler &mdash; around the widest part of your head, just above your ears and across your forehead. Keep it flat and snug, not tight. That number in centimetres is your size.</p>
+            <table class="size-tbl">
+              <tr><th>Small</th><td>up to 53&nbsp;cm</td><td>500&ndash;530&nbsp;mm</td></tr>
+              <tr><th>Medium</th><td>53&ndash;56&nbsp;cm</td><td>530&ndash;560&nbsp;mm</td></tr>
+              <tr><th>Large</th><td>56&nbsp;cm and up</td><td>560&nbsp;mm&nbsp;+</td></tr>
+            </table>
+            <p class="hint">Right on a line? Choose the smaller size &mdash; the soft band stretches up more kindly than it grips when loose.</p>
+          </div>
+        </details>
+      </div>
       <button class="btn btn-primary" data-add style="padding:1.25em 2.4em">Add to Cart — <span class="price" data-base="499">R499</span></button>
       <div class="reassure"><span>Free shipping over <span class="price" data-base="750">R750</span></span><span>14-night sleep trial</span><span>Ships within 7 days</span></div>
     </div>
@@ -500,7 +548,7 @@
   </div>
 </footer>
 
-<div class="toast" id="toast">Added to cart — <span class="price" data-base="499">R499</span></div>
+<div class="toast" id="toast">Added to cart — <span id="toastSize">Medium</span> · <span class="price" data-base="499">R499</span></div>
 
 <script>
 (function(){
@@ -536,10 +584,27 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape')navSet(false);});
   }
 
+  // size selector (radiogroup)
+  var selectedSize='Medium';
+  var sizeGroup=document.getElementById('sizeGroup');
+  if(sizeGroup){
+    var opts=Array.prototype.slice.call(sizeGroup.querySelectorAll('.size-opt'));
+    function pick(o){opts.forEach(function(x){var on=x===o;x.classList.toggle('is-on',on);
+      x.setAttribute('aria-checked',String(on));x.tabIndex=on?0:-1;});selectedSize=o.getAttribute('data-size');}
+    opts.forEach(function(o,i){
+      o.addEventListener('click',function(){pick(o);});
+      o.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();var n=opts[(i+1)%opts.length];pick(n);n.focus();}
+        else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();var p=opts[(i-1+opts.length)%opts.length];pick(p);p.focus();}
+      });
+    });
+  }
+
   // add to cart — toast + header cart count
-  var toast=document.getElementById('toast'),tHide,cartCount=0,cc=document.getElementById('cartCount');
+  var toast=document.getElementById('toast'),tHide,cartCount=0,cc=document.getElementById('cartCount'),ts=document.getElementById('toastSize');
   document.querySelectorAll('[data-add]').forEach(function(b){b.addEventListener('click',function(){
     cartCount++;if(cc){cc.textContent=cartCount;cc.classList.add('show');}
+    if(ts)ts.textContent=selectedSize;
     toast.classList.add('show');clearTimeout(tHide);tHide=setTimeout(function(){toast.classList.remove('show');},2200);});});
 
   // ---- calm scroll reveals (fade-in-up) ----
